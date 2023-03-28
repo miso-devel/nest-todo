@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, Query, Redirect } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -10,8 +10,17 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('cats')
-  findAll(): string {
-    return 'This action returns all catsAAA';
+  @Get('docs')
+  @Redirect('https://docs.nestjs.com', 302)
+  getDocs(@Query('version') version) {
+    console.log(version);
+    if (version && version === '5') {
+      return { url: 'https://docs.nestjs.com/v5/' };
+    }
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string): string {
+    return `This action returns a #${id} cat`;
   }
 }
