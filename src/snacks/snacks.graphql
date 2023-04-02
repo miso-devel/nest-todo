@@ -1,0 +1,24 @@
+type Snack {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input CreateSnackInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateSnackInput {
+  id: Int!
+}
+
+type Query {
+  snacks: [Snack]!
+  snack(id: Int!): Snack
+}
+
+type Mutation {
+  createSnack(createSnackInput: CreateSnackInput!): Snack!
+  updateSnack(updateSnackInput: UpdateSnackInput!): Snack!
+  removeSnack(id: Int!): Snack
+}

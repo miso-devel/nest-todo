@@ -9,23 +9,4 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-
-  @Get('docs')
-  @Redirect('https://docs.nestjs.com', 302)
-  getDocs(
-    @Query('version') version: string,
-    @Query('name') name: string,
-    @Query('sample') sample: string,
-  ) {
-    console.log(version);
-    if (version && version === '5') {
-      console.log(name);
-      return { url: 'https://docs.nestjs.com/v5/' };
-    }
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string): string {
-    return `This action returns a #${id} cat`;
-  }
 }
